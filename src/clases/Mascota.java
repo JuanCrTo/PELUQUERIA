@@ -12,13 +12,14 @@ public class Mascota implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;  // Nuevo campo para la clave primaria
+    private int id;  // Nuevo campo para la clave primaria
 
     private String raza;
     private String nombre;
     private String dateBirth;
     private String color;
     private String edad;
+    private String mascota;
     
     @OneToOne
     private Duenio unDuenio;
@@ -26,22 +27,39 @@ public class Mascota implements Serializable {
     public Mascota() {
     }
 
-    public Mascota(String raza, String nombre, String dateBirth, String color, String edad) {
+    public Mascota(int id, String raza, String nombre, String dateBirth, String color, String edad, String mascota, Duenio unDuenio) {
+        this.id = id;
         this.raza = raza;
         this.nombre = nombre;
         this.dateBirth = dateBirth;
         this.color = color;
         this.edad = edad;
+        this.mascota = mascota;
+        this.unDuenio = unDuenio;
     }
-
+    
+    
+    
+    
+    
     // Getters y setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
+
+    public String getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(String mascota) {
+        this.mascota = mascota;
+    }
+    
+    
 
     public String getRaza() {
         return raza;

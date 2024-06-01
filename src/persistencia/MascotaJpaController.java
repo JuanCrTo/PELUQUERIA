@@ -12,15 +12,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import persistencia.exceptions.NonexistentEntityException;
 
-
 public class MascotaJpaController implements Serializable {
 
     public MascotaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
     private EntityManagerFactory emf = null;
-    
+
     public MascotaJpaController() {
         emf = Persistence.createEntityManagerFactory("peluqueriaPU");
     }
@@ -44,29 +43,30 @@ public class MascotaJpaController implements Serializable {
     }
 
     public void edit(Mascota mascota) throws NonexistentEntityException, Exception {
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            mascota = em.merge(mascota);
-            em.getTransaction().commit();
-        } catch (Exception ex) {
-            String msg = ex.getLocalizedMessage();
-            if (msg == null || msg.length() == 0) {
-                String id = mascota.getRaza();
-                if (findMascota(id) == null) {
-                    throw new NonexistentEntityException("The mascota with id " + id + " no longer exists.");
-                }
-            }
-            throw ex;
-        } finally {
-            if (em != null) {
-                em.close();
+    EntityManager em = null;
+    try {
+        em = getEntityManager();
+        em.getTransaction().begin();
+        mascota = em.merge(mascota);
+        em.getTransaction().commit();
+    } catch (Exception ex) {
+        String msg = ex.getLocalizedMessage();
+        if (msg == null || msg.length() == 0) {
+            int id = mascota.getId(); // Cambiar a int
+            if (findMascota(id) == null) { // Usar el método actualizado
+                throw new NonexistentEntityException("The mascota with id " + id + " no longer exists.");
             }
         }
+        throw ex;
+    } finally {
+        if (em != null) {
+            em.close();
+        }
     }
+}
 
-    public void destroy(String id) throws NonexistentEntityException {
+
+    public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -111,7 +111,7 @@ public class MascotaJpaController implements Serializable {
         }
     }
 
-    public Mascota findMascota(String id) {
+    public Mascota findMascota(int id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Mascota.class, id);
@@ -132,5 +132,5 @@ public class MascotaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
