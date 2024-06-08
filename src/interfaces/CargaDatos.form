@@ -212,10 +212,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelMascota1" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                                          <Component id="labelColor1" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="labelFecha1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <Component id="labelNombre1" min="-2" pref="48" max="-2" attributes="0"/>
+                                          <Component id="labelColor1" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <Component id="labelFecha1" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <Component id="labelNombre1" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                          <Component id="labelMascota1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -226,30 +226,30 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelPrecioTotal2" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
-                                          <Component id="labelServicio1" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="labelPrecioTotal2" pref="80" max="32767" attributes="0"/>
+                                          <Component id="labelServicio1" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jComboBoxServicio1" max="32767" attributes="0"/>
                                           <Component id="jTextFieldPrecioTotal" min="-2" pref="201" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelPhoneMen2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="labelEdad1" min="-2" pref="32" max="-2" attributes="0"/>
-                                                  <Component id="labelRaza" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="labelRaza" min="-2" pref="67" max="-2" attributes="0"/>
+                                                  <Component id="labelEdad1" min="-2" pref="81" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="labelNombreDueño1" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="labelPhoneMen2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="labelNombreDueño1" alignment="0" pref="118" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -258,21 +258,21 @@
                                           <Component id="jTextFieldAge" max="32767" attributes="0"/>
                                           <Component id="jTextFieldAge1" alignment="0" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jButtonSelectImagen1" min="-2" pref="119" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldImageSelected" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButtonSelectImagen1" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabelImagenSelected" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                               <Component id="labelLogo" min="-2" pref="461" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -331,7 +331,7 @@
                               <Component id="jTextFieldNameMen" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -342,23 +342,19 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="labelPrecioTotal2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldPrecioTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonSelectImagen1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextFieldImageSelected" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jButtonSelectImagen1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelImagenSelected" min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                       <Component id="labelLogo" min="-2" pref="370" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="92" max="32767" attributes="0"/>
+                          <EmptySpace pref="279" max="32767" attributes="0"/>
                           <Component id="labelPrecioTotal3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="165" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="351" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -477,7 +473,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="labelPrecioTotal2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Precio Total:"/>
+                <Property name="text" type="java.lang.String" value="PrecioTotal:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldPrecioTotal">
@@ -496,8 +492,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelectImagen1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldImageSelected">
-            </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAge1">
@@ -505,6 +499,8 @@
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldAge1FocusGained"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAge1ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelImagenSelected">
             </Component>
             <Component class="javax.swing.JLabel" name="labelLogo">
               <Properties>

@@ -1,10 +1,17 @@
 package interfaces;
 
 import clases.Controlador;
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class CargaDatos extends javax.swing.JFrame {
+    
+    public File archivoSeleccionado;
 
     Controlador control = new Controlador();
 
@@ -46,9 +53,9 @@ public class CargaDatos extends javax.swing.JFrame {
         jTextFieldPrecioTotal = new javax.swing.JTextField();
         labelPrecioTotal3 = new javax.swing.JLabel();
         jButtonSelectImagen1 = new javax.swing.JButton();
-        jTextFieldImageSelected = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jTextFieldAge1 = new javax.swing.JTextField();
+        jLabelImagenSelected = new javax.swing.JLabel();
         labelLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,7 +215,7 @@ public class CargaDatos extends javax.swing.JFrame {
             }
         });
 
-        labelPrecioTotal2.setText("Precio Total:");
+        labelPrecioTotal2.setText("PrecioTotal:");
 
         jTextFieldPrecioTotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -253,10 +260,10 @@ public class CargaDatos extends javax.swing.JFrame {
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFormLayout.createSequentialGroup()
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,41 +271,41 @@ public class CargaDatos extends javax.swing.JFrame {
                                     .addComponent(jTextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelPrecioTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelServicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelPrecioTotal2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(labelServicio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBoxServicio1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(33, 33, 33)
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelPhoneMen2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanelFormLayout.createSequentialGroup()
                                         .addGap(2, 2, 2)
                                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelRaza)))
-                                    .addComponent(labelNombreDueño1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(labelRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(labelPhoneMen2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelNombreDueño1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldNameMen)
                                     .addComponent(jTextFieldPhoneMen)
                                     .addComponent(jTextFieldAge)
-                                    .addComponent(jTextFieldAge1)))
+                                    .addComponent(jTextFieldAge1))
+                                .addGap(38, 38, 38))
                             .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButtonSelectImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldImageSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(38, 38, 38))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSelectImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 27, Short.MAX_VALUE))))
                     .addGroup(jPanelFormLayout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelFormLayout.createSequentialGroup()
                     .addContainerGap(641, Short.MAX_VALUE)
@@ -340,7 +347,7 @@ public class CargaDatos extends javax.swing.JFrame {
                     .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelNombreDueño1)
                         .addComponent(jTextFieldNameMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
+                .addGap(40, 40, 40)
                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelFormLayout.createSequentialGroup()
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -349,19 +356,16 @@ public class CargaDatos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelPrecioTotal2)
-                            .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelFormLayout.createSequentialGroup()
-                        .addComponent(jTextFieldImageSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2))
-                    .addComponent(jButtonSelectImagen1))
-                .addGap(18, 18, 18)
-                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSelectImagen1)))
+                    .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelFormLayout.createSequentialGroup()
-                    .addContainerGap(92, Short.MAX_VALUE)
+                    .addContainerGap(279, Short.MAX_VALUE)
                     .addComponent(labelPrecioTotal3)
-                    .addGap(0, 165, Short.MAX_VALUE)))
+                    .addGap(0, 351, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
@@ -525,7 +529,27 @@ public class CargaDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPrecioTotalActionPerformed
 
     private void jButtonSelectImagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectImagen1ActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(null);
+        
+        if (result==JFileChooser.APPROVE_OPTION){
+            archivoSeleccionado = fileChooser.getSelectedFile();
+            jLabelImagenSelected.setText(archivoSeleccionado.getName());
+            
+            try {
+                Image img = ImageIO.read(archivoSeleccionado);
+                ImageIcon originalIcon = new ImageIcon(img);
+                
+                int lblAnchura =  jLabelImagenSelected.getWidth();
+                int lblAltura = jLabelImagenSelected.getHeight();
+                
+                Image scaleImage = originalIcon.getImage().getScaledInstance(lblAnchura, lblAltura, Image.SCALE_SMOOTH);
+                jLabelImagenSelected.setIcon(new ImageIcon(scaleImage));
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERROR AL MOSTRAR IMAGEN");
+            }
+        }
     }//GEN-LAST:event_jButtonSelectImagen1ActionPerformed
 
     private void jTextFieldAge1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAge1FocusGained
@@ -548,11 +572,11 @@ public class CargaDatos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxMascota1;
     private javax.swing.JComboBox<String> jComboBoxServicio1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabelImagenSelected;
     private javax.swing.JPanel jPanelForm;
     private javax.swing.JTextField jTextFieldAge;
     private javax.swing.JTextField jTextFieldAge1;
     private javax.swing.JTextField jTextFieldColor;
-    private javax.swing.JTextField jTextFieldImageSelected;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldNameMen;
     private javax.swing.JTextField jTextFieldPhoneMen;
