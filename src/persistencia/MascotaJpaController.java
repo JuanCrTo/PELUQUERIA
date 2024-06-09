@@ -33,6 +33,7 @@ public class MascotaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            System.out.println("Imagen: " + mascota.getImagen().length);
             em.persist(mascota);
             em.getTransaction().commit();
         } finally {

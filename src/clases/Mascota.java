@@ -1,48 +1,69 @@
 package clases;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Mascota implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;  // Nuevo campo para la clave primaria
+    private int id; 
 
     private String raza;
     private String nombre;
-    private String dateBirth;
     private String color;
     private String edad;
     private String mascota;
-    
+
     @OneToOne
     private Duenio unDuenio;
+    
+    @Lob
+    private byte[] imagen;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaSignUpMascota;
 
     public Mascota() {
     }
 
-    public Mascota(int id, String raza, String nombre, String dateBirth, String color, String edad, String mascota, Duenio unDuenio) {
+    public Mascota(int id, String raza, String nombre, String color, String edad, String mascota, Duenio unDuenio, byte[] imagen, Date fechaSignUpMascota) {
         this.id = id;
         this.raza = raza;
         this.nombre = nombre;
-        this.dateBirth = dateBirth;
         this.color = color;
         this.edad = edad;
         this.mascota = mascota;
         this.unDuenio = unDuenio;
+        this.imagen = imagen;
+        this.fechaSignUpMascota = fechaSignUpMascota;
     }
-    
-    
-    
-    
-    
-    // Getters y setters
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
+
+    public Date getFechaSignUpMascota() {
+        return fechaSignUpMascota;
+    }
+
+    public void setFechaSignUpMascota(Date fechaSignUpMascota) {
+        this.fechaSignUpMascota = fechaSignUpMascota;
+    }
+
     public int getId() {
         return id;
     }
@@ -58,8 +79,6 @@ public class Mascota implements Serializable {
     public void setMascota(String mascota) {
         this.mascota = mascota;
     }
-    
-    
 
     public String getRaza() {
         return raza;
@@ -75,14 +94,6 @@ public class Mascota implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDateBirth() {
-        return dateBirth;
-    }
-
-    public void setDateBirth(String dateBirth) {
-        this.dateBirth = dateBirth;
     }
 
     public String getColor() {

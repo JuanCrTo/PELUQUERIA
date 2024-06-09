@@ -74,7 +74,7 @@ public class VistaDatos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +116,7 @@ public class VistaDatos extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -153,20 +153,24 @@ public class VistaDatos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(ButtonVolver)
                         .addGap(129, 129, 129)
                         .addComponent(labelVeterinaria, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonSalir)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addComponent(ButtonSalir)
+                        .addGap(53, 53, 53))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +186,9 @@ public class VistaDatos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(30, 30, 30)
+                .addGap(55, 55, 55)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,35 +282,36 @@ public class VistaDatos extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
-        DefaultTableModel tabla = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-
-        //Name columns
-        String titulos[] = {"Id", "Raza", "Nombre", "Fec.Nacimiento", "Color", "Edad", "Ti.Mascota", "Nombre Dueño", "Cel.Dueño"};
-        tabla.setColumnIdentifiers(titulos);
-
-        //Carga dates DB
-        List<Mascota> listaMascotas = control.traerMascotas();
-
-        //Recorrer y mostrar elementos de la tabla
-        if (listaMascotas != null) {
-            for (Mascota masco : listaMascotas) {
-                Object[] objeto;
-                if (masco.getUnDuenio() != null) {
-                    objeto = new Object[]{masco.getId(), masco.getRaza(), masco.getNombre(), masco.getDateBirth(), masco.getColor(), masco.getEdad(), masco.getMascota(), masco.getUnDuenio().getNameDuenio(), masco.getUnDuenio().getCelDuenio()};
-                } else {
-                    objeto = new Object[]{masco.getId(), masco.getRaza(), masco.getNombre(), masco.getDateBirth(), masco.getColor(), masco.getEdad(), masco.getMascota(), null, null};
-                }
-                tabla.addRow(objeto);
-            }
+    DefaultTableModel tabla = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
         }
+    };
 
-        jTableVistaDatos.setModel(tabla);
+    // Nombre de las columnas
+    String titulos[] = {"Id", "Raza", "Nombre", "Fec.Nacimiento", "Color", "Edad", "Ti.Mascota", "Nombre Dueño", "Cel.Dueño", "Imagen"};
+    tabla.setColumnIdentifiers(titulos);
+
+    // Cargar datos de la base de datos
+    List<Mascota> listaMascotas = control.traerMascotas();
+
+    // Recorrer y mostrar los elementos en la tabla
+    if (listaMascotas != null) {
+        for (Mascota masco : listaMascotas) {
+            Object[] objeto;
+            if (masco.getUnDuenio() != null) {
+                objeto = new Object[]{masco.getId(), masco.getRaza(), masco.getNombre(), masco.getFechaSignUpMascota(), masco.getColor(), masco.getEdad(), masco.getMascota(), masco.getUnDuenio().getNameDuenio(), masco.getUnDuenio().getCelDuenio(), masco.getImagen()};
+            } else {
+                objeto = new Object[]{masco.getId(), masco.getRaza(), masco.getNombre(), masco.getFechaSignUpMascota(), masco.getColor(), masco.getEdad(), masco.getMascota(), null, null, masco.getImagen()};
+            }
+            tabla.addRow(objeto);
+        }
     }
+
+    jTableVistaDatos.setModel(tabla);
+}
+
 
     private void mostrarMensajeError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);

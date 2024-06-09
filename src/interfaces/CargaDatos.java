@@ -3,6 +3,12 @@ package interfaces;
 import clases.Controlador;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -10,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class CargaDatos extends javax.swing.JFrame {
-    
+
     public File archivoSeleccionado;
 
     Controlador control = new Controlador();
@@ -44,19 +50,15 @@ public class CargaDatos extends javax.swing.JFrame {
         jTextFieldColor = new javax.swing.JTextField();
         labelRaza = new javax.swing.JLabel();
         jTextFieldNameMen = new javax.swing.JTextField();
-        jComboBoxMascota1 = new javax.swing.JComboBox<>();
+        jComboBoxMascota = new javax.swing.JComboBox<>();
         labelPhoneMen2 = new javax.swing.JLabel();
         jTextFieldPhoneMen = new javax.swing.JTextField();
-        labelServicio1 = new javax.swing.JLabel();
-        jComboBoxServicio1 = new javax.swing.JComboBox<>();
-        labelPrecioTotal2 = new javax.swing.JLabel();
-        jTextFieldPrecioTotal = new javax.swing.JTextField();
         labelPrecioTotal3 = new javax.swing.JLabel();
         jButtonSelectImagen1 = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextFieldAge1 = new javax.swing.JTextField();
+        jTextFieldRaza = new javax.swing.JTextField();
         jLabelImagenSelected = new javax.swing.JLabel();
         labelLogo = new javax.swing.JLabel();
+        jDateChooserDateSignUp = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,7 +138,7 @@ public class CargaDatos extends javax.swing.JFrame {
 
         labelEdad1.setText("Edad:");
 
-        labelFecha1.setText("Fecha de Nacimiento:");
+        labelFecha1.setText("Fecha de Ingreso:");
 
         labelNombre1.setText("Nombre:");
 
@@ -186,10 +188,10 @@ public class CargaDatos extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxMascota1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
-        jComboBoxMascota1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
+        jComboBoxMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxMascota1ActionPerformed(evt);
+                jComboBoxMascotaActionPerformed(evt);
             }
         });
 
@@ -206,28 +208,6 @@ public class CargaDatos extends javax.swing.JFrame {
             }
         });
 
-        labelServicio1.setText("Servicio:");
-
-        jComboBoxServicio1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baño Basico", "Corte de Pelo y Estilizado", "Corte de Uñas", "Spa (masajes-mascarillas-etc)", "Limpieza de Oidos y Dientes" }));
-        jComboBoxServicio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxServicio1ActionPerformed(evt);
-            }
-        });
-
-        labelPrecioTotal2.setText("PrecioTotal:");
-
-        jTextFieldPrecioTotal.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextFieldPrecioTotalFocusGained(evt);
-            }
-        });
-        jTextFieldPrecioTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPrecioTotalActionPerformed(evt);
-            }
-        });
-
         jButtonSelectImagen1.setText("Seleccionar Foto:");
         jButtonSelectImagen1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,14 +215,14 @@ public class CargaDatos extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldAge1.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextFieldRaza.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextFieldAge1FocusGained(evt);
+                jTextFieldRazaFocusGained(evt);
             }
         });
-        jTextFieldAge1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldRaza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAge1ActionPerformed(evt);
+                jTextFieldRazaActionPerformed(evt);
             }
         });
 
@@ -254,58 +234,44 @@ public class CargaDatos extends javax.swing.JFrame {
         jPanelFormLayout.setHorizontalGroup(
             jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(105, 105, 105)
                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFormLayout.createSequentialGroup()
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(jComboBoxMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldColor, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(jDateChooserDateSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelFormLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(labelPrecioTotal2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                    .addComponent(labelServicio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxServicio1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(labelRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelPhoneMen2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelNombreDueño1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanelFormLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(labelPhoneMen2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelNombreDueño1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNameMen)
-                                    .addComponent(jTextFieldPhoneMen)
-                                    .addComponent(jTextFieldAge)
-                                    .addComponent(jTextFieldAge1))
-                                .addGap(38, 38, 38))
-                            .addGroup(jPanelFormLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonSelectImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 27, Short.MAX_VALUE))))
+                            .addComponent(jTextFieldNameMen)
+                            .addComponent(jTextFieldPhoneMen)
+                            .addComponent(jTextFieldAge)
+                            .addComponent(jTextFieldRaza))
+                        .addGap(38, 38, 38))
                     .addGroup(jPanelFormLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelFormLayout.createSequentialGroup()
+                                .addComponent(jButtonSelectImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 161, Short.MAX_VALUE))))
             .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelFormLayout.createSequentialGroup()
                     .addContainerGap(641, Short.MAX_VALUE)
@@ -318,16 +284,21 @@ public class CargaDatos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelFormLayout.createSequentialGroup()
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNombreDueño1)
+                            .addComponent(jTextFieldNameMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanelFormLayout.createSequentialGroup()
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFormLayout.createSequentialGroup()
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelMascota1)
-                                    .addComponent(jComboBoxMascota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jComboBoxMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormLayout.createSequentialGroup()
                                 .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelRaza)
-                                    .addComponent(jTextFieldAge1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldRaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,26 +311,19 @@ public class CargaDatos extends javax.swing.JFrame {
                             .addComponent(labelColor1)
                             .addComponent(labelPhoneMen2)
                             .addComponent(jTextFieldPhoneMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelFecha1)))
-                    .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelNombreDueño1)
-                        .addComponent(jTextFieldNameMen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelFecha1)
+                            .addComponent(jDateChooserDateSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)))
+                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFormLayout.createSequentialGroup()
-                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelServicio1)
-                            .addComponent(jComboBoxServicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPrecioTotal2)
-                            .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSelectImagen1)))
-                    .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jButtonSelectImagen1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormLayout.createSequentialGroup()
+                        .addComponent(jLabelImagenSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
                 .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelFormLayout.createSequentialGroup()
@@ -382,12 +346,12 @@ public class CargaDatos extends javax.swing.JFrame {
                         .addGap(122, 122, 122)
                         .addComponent(ButtonSalir))
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(481, 481, 481)
+                        .addGap(387, 387, 387)
                         .addComponent(jPanelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(527, 527, 527)
+                        .addGap(447, 447, 447)
                         .addComponent(PanelButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(766, Short.MAX_VALUE))
+                .addContainerGap(774, Short.MAX_VALUE))
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,9 +363,9 @@ public class CargaDatos extends javax.swing.JFrame {
                     .addComponent(ButtonVolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(PanelButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -437,35 +401,55 @@ public class CargaDatos extends javax.swing.JFrame {
     private void ButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarActionPerformed
         String edadMascota = (String) jTextFieldAge.getText();
         String colorMascota = jTextFieldColor.getText();
-        String dateBirthMascota = jDateChooser.getDateFormatString();
+        Date dateSignUpMascota = jDateChooserDateSignUp.getDate();
         String nameMascota = jTextFieldName.getText();
         String tipoMascota = (String) jComboBoxMascota.getSelectedItem();
         String nameMen = jTextFieldNameMen.getText();
         String phoneMen = jTextFieldPhoneMen.getText();
-        String raza = jTextFieldAge.getText();
+        String raza = jTextFieldRaza.getText();
+        String imagePath = jLabelImagenSelected.getText();
 
-        control.guardar(raza, edadMascota, colorMascota, dateBirthMascota, nameMascota, tipoMascota, nameMen, phoneMen);
+        byte[] imageBytes = null;
+        if (imagePath != null && !imagePath.isEmpty() && Files.exists(Paths.get(imagePath))) {
+            try {
+                imageBytes = Files.readAllBytes(Paths.get(imagePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Error: La ruta de la imagen no es válida o el archivo no existe.");
+        }
 
-        JOptionPane optionPane = new JOptionPane("Guardado Exitosamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("GUARDADO");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
+        if (imageBytes != null) {
+            control.guardar(raza, edadMascota, colorMascota, dateSignUpMascota, nameMascota, tipoMascota, nameMen, phoneMen, imageBytes);
+            JOptionPane optionPane = new JOptionPane("Guardado Exitosamente");
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog("GUARDADO");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        } else {
+            JOptionPane optionPane = new JOptionPane("Error al cargar la imagen");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("ERROR");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        }
 
         jTextFieldAge.setText("");
         jTextFieldColor.setText("");
-        jDateChooser.setCalendar(null);
+        jDateChooserDateSignUp.setCalendar(null);
         jTextFieldName.setText("");
         jTextFieldNameMen.setText("");
         jTextFieldAge.setText("");
         jTextFieldPhoneMen.setText("");
+        jTextFieldRaza.setText("");
     }//GEN-LAST:event_ButtonGuardarActionPerformed
 
     private void ButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimpiarActionPerformed
 
         jTextFieldAge.setText("");
         jTextFieldColor.setText("");
-        jDateChooser.setCalendar(null);
+        jDateChooserDateSignUp.setCalendar(null);
         jTextFieldName.setText("");
         jTextFieldNameMen.setText("");
         jTextFieldAge.setText("");
@@ -504,9 +488,9 @@ public class CargaDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNameMenActionPerformed
 
-    private void jComboBoxMascota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMascota1ActionPerformed
+    private void jComboBoxMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxMascota1ActionPerformed
+    }//GEN-LAST:event_jComboBoxMascotaActionPerformed
 
     private void jTextFieldPhoneMenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPhoneMenFocusGained
         // TODO add your handling code here:
@@ -516,49 +500,37 @@ public class CargaDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPhoneMenActionPerformed
 
-    private void jComboBoxServicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicio1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxServicio1ActionPerformed
-
-    private void jTextFieldPrecioTotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrecioTotalFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPrecioTotalFocusGained
-
-    private void jTextFieldPrecioTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPrecioTotalActionPerformed
-
     private void jButtonSelectImagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectImagen1ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showOpenDialog(null);
-        
-        if (result==JFileChooser.APPROVE_OPTION){
+
+        if (result == JFileChooser.APPROVE_OPTION) {
             archivoSeleccionado = fileChooser.getSelectedFile();
             jLabelImagenSelected.setText(archivoSeleccionado.getName());
-            
+
             try {
                 Image img = ImageIO.read(archivoSeleccionado);
                 ImageIcon originalIcon = new ImageIcon(img);
-                
-                int lblAnchura =  jLabelImagenSelected.getWidth();
+
+                int lblAnchura = jLabelImagenSelected.getWidth();
                 int lblAltura = jLabelImagenSelected.getHeight();
-                
+
                 Image scaleImage = originalIcon.getImage().getScaledInstance(lblAnchura, lblAltura, Image.SCALE_SMOOTH);
                 jLabelImagenSelected.setIcon(new ImageIcon(scaleImage));
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ERROR AL MOSTRAR IMAGEN");
             }
         }
     }//GEN-LAST:event_jButtonSelectImagen1ActionPerformed
 
-    private void jTextFieldAge1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAge1FocusGained
+    private void jTextFieldRazaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldRazaFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAge1FocusGained
+    }//GEN-LAST:event_jTextFieldRazaFocusGained
 
-    private void jTextFieldAge1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAge1ActionPerformed
+    private void jTextFieldRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRazaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAge1ActionPerformed
+    }//GEN-LAST:event_jTextFieldRazaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -569,18 +541,16 @@ public class CargaDatos extends javax.swing.JFrame {
     private javax.swing.JPanel PanelButtons;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton jButtonSelectImagen1;
-    private javax.swing.JComboBox<String> jComboBoxMascota1;
-    private javax.swing.JComboBox<String> jComboBoxServicio1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<String> jComboBoxMascota;
+    private com.toedter.calendar.JDateChooser jDateChooserDateSignUp;
     private javax.swing.JLabel jLabelImagenSelected;
     private javax.swing.JPanel jPanelForm;
     private javax.swing.JTextField jTextFieldAge;
-    private javax.swing.JTextField jTextFieldAge1;
     private javax.swing.JTextField jTextFieldColor;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldNameMen;
     private javax.swing.JTextField jTextFieldPhoneMen;
-    private javax.swing.JTextField jTextFieldPrecioTotal;
+    private javax.swing.JTextField jTextFieldRaza;
     private javax.swing.JLabel labelColor1;
     private javax.swing.JLabel labelEdad1;
     private javax.swing.JLabel labelFecha1;
@@ -589,10 +559,8 @@ public class CargaDatos extends javax.swing.JFrame {
     private javax.swing.JLabel labelNombre1;
     private javax.swing.JLabel labelNombreDueño1;
     private javax.swing.JLabel labelPhoneMen2;
-    private javax.swing.JLabel labelPrecioTotal2;
     private javax.swing.JLabel labelPrecioTotal3;
     private javax.swing.JLabel labelRaza;
-    private javax.swing.JLabel labelServicio1;
     private javax.swing.JLabel labelVeterinaria;
     // End of variables declaration//GEN-END:variables
 }
